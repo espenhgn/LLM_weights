@@ -16,9 +16,14 @@ filenames_urls = {
     'DeepSeek-R1-Distill-Llama-8B-Q8_0.gguf': 'https://huggingface.co/unsloth/DeepSeek-R1-Distill-Llama-8B-GGUF/resolve/main/DeepSeek-R1-Distill-Llama-8B-Q8_0.gguf'
 }
 
+model_path = os.path.join(os.getcwd(), 'weights')
+os.makedirs(model_path, exist_ok=True)
+
 for filename, url in filenames_urls.items():
-    if not os.path.exists(filename):
-        download_file(url, filename)
+    output_path = os.path.join(model_path, filename)
+    if not os.path.exists(output_path):
+        print(f"Downloading {filename} to {model_path}...")
+        download_file(url, output_path)
         print(f"Downloaded {filename}")
     else:
-        print(f"{filename} already exists, skipping download")
+        print(f"{output_path} already exists, skipping download")
