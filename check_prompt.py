@@ -9,8 +9,6 @@ model_path = os.path.join(os.getcwd(), 'weights')
 prompt = "What is the capital of France?"
 max_tokens=1024
 
-os.makedirs(model_path, exist_ok=True)
-
 for filename in glob(os.path.join(model_path, '*.gguf')):
     print(f"\nChecking {filename}, asking:\n{prompt}\n")
 
